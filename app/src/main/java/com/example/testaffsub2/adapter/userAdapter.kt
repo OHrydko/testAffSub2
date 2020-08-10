@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.testaffsub2.R
 import com.example.testaffsub2.databinding.ItemBinding
-import com.example.testaffsub2.model.Data
 import com.example.testaffsub2.model.Results
 
 class UserAdapter(
@@ -20,7 +19,7 @@ class UserAdapter(
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     interface OnItemClick {
-        fun onClick(user: Data)
+        fun onClick(user: Results)
     }
 
     override fun onCreateViewHolder(
@@ -43,6 +42,7 @@ class UserAdapter(
         holder.itemBinding.name.text = name
         Glide.with(context).load(user.picture.large)
             .apply(RequestOptions.circleCropTransform()).into(holder.itemBinding.avatar)
+        holder.itemBinding.contentItem.setOnClickListener { onItemClick.onClick(user = user) }
     }
 
     override fun getItemCount(): Int {

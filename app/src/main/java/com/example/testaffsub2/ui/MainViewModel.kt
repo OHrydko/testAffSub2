@@ -4,12 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.testaffsub2.App
 import com.example.testaffsub2.model.Data
+import com.example.testaffsub2.model.Results
 import com.example.testaffsub2.repository.Repository
 
 class MainViewModel : ViewModel() {
     private var repository: Repository? = null
     private lateinit var app: App
     var isLoader: MutableLiveData<Boolean> = MutableLiveData()
+    var userInfo: Results? = null
+
 
     fun init(app: App) {
         repository = Repository()
@@ -19,4 +22,6 @@ class MainViewModel : ViewModel() {
     fun getUsers(page: Int): MutableLiveData<Data>? {
         return repository?.getUsers(app, page)
     }
+
+
 }

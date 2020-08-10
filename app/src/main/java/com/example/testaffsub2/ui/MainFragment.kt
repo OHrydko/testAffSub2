@@ -11,9 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testaffsub2.App
+import com.example.testaffsub2.R
 import com.example.testaffsub2.adapter.UserAdapter
 import com.example.testaffsub2.databinding.FragmentMainBinding
-import com.example.testaffsub2.model.Data
+import com.example.testaffsub2.model.Results
 import com.example.testaffsub2.util.LoadMoreCallback
 import com.example.testaffsub2.util.LoadMoreItemsRV
 
@@ -81,7 +82,11 @@ class MainFragment : Fragment(), UserAdapter.OnItemClick {
         fun newInstance() = MainFragment()
     }
 
-    override fun onClick(user: Data) {
-        TODO("Not yet implemented")
+    override fun onClick(user: Results) {
+        mainViewModel.userInfo = user
+        fragmentActivity.supportFragmentManager.beginTransaction()
+            .add(R.id.frame, ContentFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
     }
 }
