@@ -10,7 +10,7 @@ import com.example.testaffsub2.repository.Repository
 class MainViewModel : ViewModel() {
     private var repository: Repository? = null
     private lateinit var app: App
-    var isLoader: MutableLiveData<Boolean> = MutableLiveData()
+    var isLoader: MutableLiveData<Boolean> = MutableLiveData(true)
     var userInfo: Results? = null
 
 
